@@ -54,11 +54,38 @@ CUT_EXPORT void test_blur10(void)
   gdkcut_pixbuf_assert_equal(expected, actual, 0);
 }
 
-CUT_EXPORT void test_blur10_threshold(void)
+CUT_EXPORT void test_nearest_and_tiles(void)
 {
   GdkPixbuf *expected, *actual;
-  expected = load_fixture_image("NG.png");
-  actual = load_fixture_image("NG-blur-10.png");
+  expected = load_fixture_image("NG-nearest.png");
+  actual = load_fixture_image("NG-tiles.png");
 
-  gdkcut_pixbuf_assert_equal(expected, actual, 1000);
+  gdkcut_pixbuf_assert_equal(expected, actual, 0);
+}
+
+CUT_EXPORT void test_tiles_and_bilinear(void)
+{
+  GdkPixbuf *expected, *actual;
+  expected = load_fixture_image("NG-tiles.png");
+  actual = load_fixture_image("NG-bilinear.png");
+
+  gdkcut_pixbuf_assert_equal(expected, actual, 0);
+}
+
+CUT_EXPORT void test_bilinear_and_hyper(void)
+{
+  GdkPixbuf *expected, *actual;
+  expected = load_fixture_image("NG-bilinear.png");
+  actual = load_fixture_image("NG-hyper.png");
+
+  gdkcut_pixbuf_assert_equal(expected, actual, 0);
+}
+
+CUT_EXPORT void test_bilinear_and_hyper_threshold(void)
+{
+  GdkPixbuf *expected, *actual;
+  expected = load_fixture_image("NG-bilinear.png");
+  actual = load_fixture_image("NG-hyper.png");
+
+  gdkcut_pixbuf_assert_equal(expected, actual, 30);
 }
